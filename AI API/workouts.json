@@ -1,0 +1,193 @@
+[
+
+    {
+
+        "name": "Squats",
+
+        "Duration": "10 minutes",
+
+        "Reps": "3 sets of 15 reps",
+
+        "instructions": "Stand with feet shoulder-width apart, lower hips down as if sitting on a chair, and rise back up.",
+
+        "Calories_Burnt": 100,
+
+        "Benefits": ["Strengthens lower body", "Improves flexibility", "Enhances balance"],
+        "images": [
+            "https://fitnessprogramer.com/wp-content/uploads/2023/09/Dumbbell-Squat.gif"
+          ]
+
+    },
+
+    {
+
+        "name": "Deadlifts",
+
+        "Duration": "10 minutes",
+
+        "Reps": "3 sets of 10 reps",
+
+        "instructions": "Keep feet flat, grip the barbell, and lift it by extending hips and knees together.",
+
+        "Calories_Burnt": 150,
+
+        "Benefits": ["Builds back strength", "Improves posture", "Strengthens hamstrings"],
+
+        "images": [
+            "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Deadlift.gif"
+            
+          ]
+
+    },
+
+    {
+
+        "name": "Bench Presses",
+
+        "Duration": "15 minutes",
+
+        "Reps": "3 sets of 12 reps",
+
+        "instructions": "Lie on a bench, hold the barbell with hands slightly wider than shoulder-width, and push upwards.",
+
+        "Calories_Burnt": 120,
+
+        "Benefits": ["Strengthens chest muscles", "Improves upper body strength", "Targets triceps"],
+        "images":["https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bench-Press.gif"]
+
+    },
+
+    {
+
+        "name": "Overhead Presses",
+
+        "Duration": "10 minutes",
+
+        "Reps": "3 sets of 8 reps",
+
+        "instructions": "Stand or sit upright, lift a barbell or dumbbells overhead while keeping your back straight.",
+
+        "Calories_Burnt": 110,
+
+        "Benefits": ["Builds shoulder strength", "Enhances core stability", "Improves posture"],
+        "images":["https://fitnessprogramer.com/wp-content/uploads/2021/07/Barbell-Standing-Military-Press.gif"]
+
+    },
+
+    {
+
+        "name": "Yoga",
+
+        "Duration": "30 minutes",
+
+        "Reps": "Various poses held for 30-60 seconds each",
+
+        "instructions": "Perform different poses focusing on breath control and body balance.",
+
+        "Calories_Burnt": 180,
+
+        "Benefits": ["Improves flexibility", "Reduces stress", "Enhances mindfulness"],
+        "images":["https://fitnessprogramer.com/wp-content/uploads/2021/02/Bow-Yoga-Pose.gif","https://fitnessprogramer.com/wp-content/uploads/2021/02/Bow-Yoga-Pose.gif"]
+
+    },
+
+    {
+
+        "name": "Brisk Walking",
+
+        "Duration": "30 minutes",
+
+        "Reps": "Continuous activity",
+
+        "instructions": "Walk at a pace that makes you slightly breathless but still able to talk.",
+
+        "Calories_Burnt": 150,
+
+        "Benefits": ["Boosts cardiovascular health", "Burns calories", "Improves mood"],
+        "images":["https://www.fitforladyparma.it/wp-content/uploads/2017/02/fitwalking.jpg"]
+
+    },
+
+    {
+
+        "name": "Cycling",
+
+        "Duration": "30 minutes",
+
+        "Reps": "Continuous activity",
+
+        "instructions": "Ride a bicycle or stationary bike, maintaining a consistent speed.",
+
+        "Calories_Burnt": 200,
+
+        "Benefits": ["Strengthens legs", "Improves stamina", "Low-impact cardio"],
+        "images":["https://cyclingmagazine.ca/wp-content/uploads/2019/02/GettyImages-942488686.jpg"]
+
+    },
+
+    {
+
+        "name": "Swimming",
+
+        "Duration": "30 minutes",
+
+        "Reps": "Continuous activity",
+
+        "instructions": "Perform any swim stroke like freestyle, breaststroke, or backstroke.",
+
+        "Calories_Burnt": 250,
+
+        "Benefits": ["Full-body workout", "Enhances lung capacity", "Low-impact on joints"],
+        "images":["https://increaseheightblog.com/wp-content/uploads/2023/05/Breaststroke-1536x1024.jpg"]
+
+    },
+
+    {
+
+        "name": "Running",
+
+        "Duration": "20 minutes",
+
+        "Reps": "Continuous activity",
+
+        "instructions": "Run at a pace that challenges your endurance.",
+
+        "Calories_Burnt": 300,
+
+        "Benefits": ["Boosts cardiovascular health", "Burns calories", "Builds stamina"]
+
+    },
+
+    {
+
+        "name": "Dancing",
+
+        "Duration": "30 minutes",
+
+        "Reps": "Continuous activity",
+
+        "instructions": "Follow any dance routine or freestyle to music.",
+
+        "Calories_Burnt": 200,
+
+        "Benefits": ["Improves coordination", "Burns calories", "Elevates mood"]
+
+    },
+
+    {
+
+        "name": "Walking",
+
+        "Duration": "20 minutes",
+
+        "Reps": "Continuous activity",
+
+        "instructions": "Walk at a comfortable pace.",
+
+        "Calories_Burnt": 100,
+
+        "Benefits": ["Improves circulation", "Relaxes the mind", "Strengthens bones"]
+
+    }
+
+]

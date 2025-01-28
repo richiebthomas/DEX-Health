@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #e9f7ef;
+        }
+        .error {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ff6b6b;
+            border-radius: 5px;
+            background-color: #ffe3e3;
+            color: #ff6b6b;
+        }
+        .workout-plan {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .workout-card {
+            flex: 1 1 calc(33.333% - 40px);
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        .slideshow-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slideshow-container img.active {
+            opacity: 1;
+        }
+        .workout-card h4 {
+            margin: 10px 0;
+        }
+        .workout-card p {
+            margin: 5px 0;
+        }
+        .more-details {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        let slotCount = 1;
+
+        function addTimeSlot() {
+            slotCount++;
+            const slotHTML = `
+                <div class="form-group" id="slot${slotCount}">
+                    <label for="time_start_${slotCount}">Time Slot ${slotCount} Start:</label>
+                    <input type="time" id="time_start_${slotCount}" name="slot${slotCount}_start" required>
+                    <label for="time_end_${slotCount}">End:</label>
+                    <input type="time" id="time_end_${slotCount}" name="slot${slotCount}_end" required>
+                    <label for="status_${slotCount}">Status:</label>
+                    <select id="status_${slotCount}" name="slot${slotCount}_status" required>
+                        <option value="free">Free</option>
+                        <option value="busy">Busy</option>
+                    </select>
+                </div>
+            `;
+            document.getElementById('time-slots').insertAdjacentHTML('beforeend', slotHTML);
+            document.getElementById('slot_count').value = slotCount;
+        }
+
+        function toggleDetails(id) {
+            const details = document.getElementById(id);
+            if (details.style.display === "none") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+
+        function startSlideshow(container) {
+            const images = container.querySelectorAll('img');
+            let currentIndex = 0;
+
+            if (images.length > 1) {
+                images[currentIndex].classList.add('active');
+
+                setInterval(() => {
+                    images[currentIndex].classList.remove('active');
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].classList.add('active');
+                }, 1000); // Change image every 3 seconds
+            } else if (images.length === 1) {
+                images[0].classList.add('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slideshow-container').forEach(container => {
+                startSlideshow(container);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Recommendation Feature Prototype</h2>
+        <h3>Demo of One of the features in the project / Not actual implementation**</h3>
+        {% if not schedule %}
+        <form method="POST">
+            <!-- Personal Details -->
+
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="height">Height (cm):</label>
+                <input type="number" step="0.1" id="height" name="height" required>
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" step="0.1" id="weight" name="weight" required>
+            </div>
+            <div class="form-group">
+                <label for="hypertension">Hypertension:</label>
+                <select id="hypertension" name="hypertension" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="diabetes">Diabetes:</label>
+                <select id="diabetes" name="diabetes" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="number" step="0.1" id="bmi" name="bmi" required>
+            </div>
+            <div class="form-group">
+                <label for="level">Fitness Level:</label>
+                <select id="level" name="level" required>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fitness_goal">Fitness Goal:</label>
+                <select id="fitness_goal" name="fitness_goal" required>
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="General Fitness">General Fitness</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fitness_type">Fitness Type:</label>
+                <select id="fitness_type" name="fitness_type" required>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Strength">Strength</option>
+                    <option value="Flexibility">Flexibility</option>
+                </select>
+            </div>
+
+            <!-- Dynamic Time Slots -->
+            <h3>Daily Schedule - When are you free in your daily life?</h3>
+            <div id="time-slots">
+                <div class="form-group" id="slot1">
+                    <label for="time_start_1">Time Slot 1 Start:</label>
+                    <input type="time" id="time_start_1" name="slot1_start" required>
+                    <label for="time_end_1">End:</label>
+                    <input type="time" id="time_end_1" name="slot1_end" required>
+                    <label for="status_1">Status:</label>
+                    <select id="status_1" name="slot1_status" required>
+                        <option value="free">Free</option>
+                        <option value="busy">Busy</option>
+                    </select>
+                </div>
+            </div>
+            <input type="hidden" id="slot_count" name="slot_count" value="1">
+            <button type="button" class="add-slot" onclick="addTimeSlot()">Add Time Slot</button>
+
+            <div class="form-group">
+                <input type="submit" value="Get Recommendation">
+            </div>
+        </form>
+        {% endif %}
+        {% if schedule %}
+        <div class="result">
+            <h3>Recommendation:</h3>
+            <p><strong>Exercises:</strong> {{ exercises|join(', ') }}</p>
+            <p><strong>Equipment:</strong> {{ equipment }}</p>
+            <p><strong>Diet:</strong> {{ diet }}</p>
+            <p><strong>Recommendation:</strong> {{ recommendation }}</p>
+
+            <h3>Workout Plans</h3>
+            <div class="workout-plan">
+                {% for slot in schedule %}
+                    {% if slot.exercises %}
+                        {% for exercise in slot.exercises %}
+                            <div class="workout-card">
+                                <div class="slideshow-container">
+                                    {% if exercise.gif %}
+                                        <img src="{{ exercise.gif }}" alt="{{ exercise.name }}">
+                                    {% elif exercise.images %}
+                                        {% for image in exercise.images %}
+                                            <img src="https://raw.githubusercontent.com/yuhonas/free-exercise-db/refs/heads/main/exercises/{{ image }}" alt="{{ exercise.name }}">
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>No image available</p>
+                                    {% endif %}
+                                </div>
+                                <h4>{{ exercise.name }}</h4>
+                                <p><strong>Time Slot:</strong> {{ slot.start }} - {{ slot.end }}</p>
+                                <a href="javascript:void(0);" onclick="toggleDetails('details-{{ exercise.name }}')">More ></a>
+                                <div id="details-{{ exercise.name }}" class="more-details">
+                                    <p><strong>Instructions:</strong></p>
+                                    <ol>
+                                        {% for step in exercise.instructions %}
+                                        <li>{{ step }}</li>
+                                        {% endfor %}
+                                    </ol>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error">
+            <p><strong>Error:</strong> {{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
